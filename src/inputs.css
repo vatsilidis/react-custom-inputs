@@ -1,0 +1,190 @@
+/* add variable for the  #f44336 */
+:root {
+  --color-error: #f44333;
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #13b538;
+  --color-info: #0097ae;
+}
+
+.react-custom-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.error-text {
+  color: var(--color-error);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.react-custom-inputs-form-input-text {
+  position: relative;
+  width: calc(50% - 5px);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
+}
+.react-custom-inputs-invalid-input-text {
+  margin-top: 5px;
+  color: var(--color-error);
+  font-size: 10px;
+  line-height: 10px;
+}
+.react-custom-inputs-form-input-text.invalid input::placeholder {
+  color: var(--color-error);
+}
+.react-custom-inputs-form-input-text input {
+  padding: 15px 13px;
+}
+.react-custom-inputs-form-input-text input:focus,
+.react-custom-inputs-form-input-text.active input {
+  padding: 20px 13px 10px 13px;
+}
+
+.react-custom-inputs-form-input-text::placeholder {
+  color: #90acd0;
+}
+.react-custom-inputs-form-input-checkbox {
+  width: 100%;
+  display: none;
+}
+.react-custom-inputs-form-input-checkbox ~ label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.react-custom-inputs-form-input-text-container [type="checkbox"] + label[for],
+.react-custom-inputs-form-input-text-container [type="radio"] + label[for] {
+  margin: 0;
+}
+
+.react-custom-inputs-form-input-text-container [type="checkbox"] + label[for],
+.react-custom-inputs-form-input-text-container [type="radio"] + label[for] {
+  margin: 0;
+}
+
+.react-custom-inputs-form-input-text label {
+  position: absolute;
+  display: none;
+  padding: 0 13px;
+  top: 5px;
+  font-size: 10px;
+  color: var(--color-secondary);
+}
+.react-custom-inputs-form-input-text.invalid input {
+  border-color: var(--color-error);
+}
+.react-custom-inputs-form-input-text.invalid label {
+  color: var(--color-error);
+}
+.react-custom-inputs-form-input-text input:focus + label,
+.react-custom-inputs-form-input-text.active label {
+  display: block;
+  transform: none !important;
+}
+.react-custom-inputs-form-input.selected {
+  border: 2px solid #0046a2;
+}
+.react-custom-inputs-form-input.disabled {
+  cursor: not-allowed;
+  background-color: #f3f3f3;
+  border-color: #acacac;
+}
+
+.react-custom-inputs-unit-text {
+  position: absolute;
+  top: 27%;
+  right: 10px;
+  color: #a9a9a9;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 13px;
+}
+
+@media only screen and (max-width: 768px) {
+  .react-custom-inputs-form-text-title {
+    font-size: 16px;
+    line-height: 16px;
+    padding-bottom: 12px;
+  }
+  .react-custom-inputs-form-input-text input {
+    font-size: 13px;
+    line-height: 13px;
+    padding: 15px 9px;
+    border-radius: 5px;
+  }
+  .react-custom-inputs-form-input-text input:focus,
+  .react-custom-inputs-form-input-text.active input {
+    padding: 22px 9px 8px 9px;
+  }
+  .react-custom-inputs-form-input-text label {
+    padding: 0 9px;
+  }
+  .react-custom-inputs-form-text-container {
+    padding-bottom: 25px;
+  }
+  .xp-wizard-checkbox-text {
+    font-size: 12px;
+    line-height: 12px;
+    max-width: calc(100% - 30px);
+  }
+  .react-custom-inputs-form-input-checkbox ~ label {
+    gap: 25px 10px;
+  }
+
+  .react-custom-inputs-form-text-container input[type="text"],
+  .react-custom-inputs-form-text-container input[type="number"],
+  .react-custom-inputs-form-text-container input[type="email"] {
+    font-size: 13px;
+  }
+  .react-custom-inputs-radio-title {
+    font-size: 14px;
+    line-height: 14px;
+    margin-bottom: 20px;
+  }
+  .react-custom-inputs-radio-container .xp-wizard-radio-button {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+  }
+  .react-custom-inputs-radio-container {
+    margin-bottom: 3px;
+  }
+  .react-custom-inputs-radio-container .react-custom-inputs-radio-option {
+    gap: 16px;
+  }
+  .react-custom-inputs-radio-text {
+    font-size: 14px;
+    max-width: calc(100% - 36px);
+  }
+  .react-custom-inputs-form-container {
+    width: 100%;
+  }
+  .react-custom-inputs-form-input-title {
+    gap: 6px;
+  }
+  .react-custom-inputs-form-input-label {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .react-custom-inputs-info-button img {
+    width: 15px;
+    height: 15px;
+  }
+}
