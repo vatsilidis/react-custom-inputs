@@ -1,0 +1,29 @@
+
+# vsCode Theme
+.vscode/
+
+# Dependency directories
+/node_modules
+
+# Build files
+/dist
+/.vscode
+/.idea
+
+# Environment variables
+.env
+
+# npm package lock file
+package-lock.json
+
+# Editor-specific files
+*.swp
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
