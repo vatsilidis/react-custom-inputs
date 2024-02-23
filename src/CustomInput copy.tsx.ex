@@ -1,18 +1,22 @@
-import React from "react";
+import React, { ChangeEvent, useCallback } from "react";
 
-interface InputProps<T> {
-  value: T;
-  type: "string" | "number"; // Define the type prop
-  handleChange: (value: T) => void;
+import { InputType } from "./types";
 
+import "./inputs.css";
+
+interface CustomInputProps {
+  value: string | number;
+  onChange: (value: string | number) => void;
   label?: string;
   width?: string;
+  type?: InputType;
   placeholder?: string;
   errorText?: string | null;
   textColor?: string;
   borderRadius?: string;
   noLeadingSpaces?: boolean;
   unitLabel?: string;
+  separateThousands?: boolean;
   borderColor?: string;
   id?: string;
   bgColor?: string;
@@ -20,43 +24,47 @@ interface InputProps<T> {
   paddingSize?: number;
 }
 
-const CustomInput = <T,>(props: InputProps<T>) => {
-  const {
-    value,
-    handleChange,
-    label,
-    placeholder,
-    errorText,
-    unitLabel,
-    id,
-    shadowColor,
-    textColor = "black",
-    width = "100%",
-    type = "text",
-    borderRadius = "4px",
-    noLeadingSpaces = false,
-    borderColor = "black",
-    bgColor = "white",
-    paddingSize = 10,
-  } = props;
+const CustomInput: React.FC<CustomInputProps> = ({
+  value,
+  onChange,
+  label,
+  placeholder,
+  errorText,
+  unitLabel,
+  id,
+  shadowColor,
+  textColor = "black",
+  width = "100%",
+  type = "text",
+  borderRadius = "4px",
+  noLeadingSpaces = false,
+  separateThousands = false,
+  borderColor = "black",
+  bgColor = "white",
+  paddingSize = 10,
+}) => {
+  const handleSeparateThousands = useCallback((value: string | number) => {
+    if (!value) return value;
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }, []);
 
-  const pad = paddingSize.toString() + "px";
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    let value: string | number = event.target.value;
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let newValue: T;
+    if (type === "number") {
+      value = Number(value ? value.replace(/[^0-9]/g, "") : 0);
 
-    if (typeof value === "number") {
-      newValue = event.target.value
-        ? (parseInt(event.target.value) as unknown as T)
-        : (0 as unknown as T);
-    } else if (noLeadingSpaces) {
-      newValue = event.target.value.replace(/^\s+/g, "") as unknown as T;
-    } else {
-      newValue = event.target.value as unknown as T;
+      return onChange(value);
     }
 
-    handleChange(newValue);
+    if (noLeadingSpaces) {
+      return onChange(value.replace(/^\s+/g, ""));
+    }
+
+    onChange(event.target.value);
   };
+
+  const pad = paddingSize.toString() + "px";
 
   return (
     <div
@@ -67,8 +75,12 @@ const CustomInput = <T,>(props: InputProps<T>) => {
     >
       <input
         type={type}
-        value={value as unknown as string}
-        onChange={handleInputChange}
+        value={
+          type === "number" && separateThousands
+            ? handleSeparateThousands(value)
+            : value
+        }
+        onChange={handleChange}
         placeholder={placeholder}
         style={{
           width,
