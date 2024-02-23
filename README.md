@@ -43,23 +43,22 @@ yarn add react-custom-inputs
 
 ### Here's a list of all the OPTIONAL props:
 
-| Prop              | Type    | Default | Description                          |
-| ----------------- | ------- | ------- | ------------------------------------ |
-| label             | string  | -       | anything you want                    |
-| placeholder       | string  | -       | anything you want                    |
-| errorText         | string  | -       | anything you want                    |
-| unitLabel         | string  | -       | anything you want                    |
-| id                | string  | -       | anything you want                    |
-| shadowColor       | string  | -       | string, hex, rgb, etc                |
-| textColor         | string  | "black" | string, hex, rgb, etc                |
-| width             | string  | "100%"  | px, rem, %, etc                      |
-| type              | string  | "text"  | all supported types are listed below |
-| borderRadius      | string  | "4px"   | px, rem, %, etc                      |
-| noLeadingSpaces   | boolean | false   | removes all leading spaces           |
-| separateThousands | boolean | false   | works only when type is 'number'     |
-| borderColor       | string  | "black" | string, hex, rgb, etc                |
-| bgColor           | string  | "white" | string, hex, rgb, etc                |
-| paddingSize       | number  | 10      | px, rem, %, etc                      |
+| Prop            | Type    | Default | Description                          |
+| --------------- | ------- | ------- | ------------------------------------ |
+| label           | string  | -       | anything you want                    |
+| placeholder     | string  | -       | anything you want                    |
+| errorText       | string  | -       | anything you want                    |
+| unitLabel       | string  | -       | anything you want                    |
+| id              | string  | -       | anything you want                    |
+| shadowColor     | string  | -       | string, hex, rgb, etc                |
+| textColor       | string  | "black" | string, hex, rgb, etc                |
+| width           | string  | "100%"  | px, rem, %, etc                      |
+| type            | string  | "text"  | all supported types are listed below |
+| borderRadius    | string  | "4px"   | px, rem, %, etc                      |
+| noLeadingSpaces | boolean | false   | removes all leading spaces           |
+| borderColor     | string  | "black" | string, hex, rgb, etc                |
+| bgColor         | string  | "white" | string, hex, rgb, etc                |
+| paddingSize     | number  | 10      | px, rem, %, etc                      |
 
 - Supported types:
 - - text
@@ -125,6 +124,7 @@ function Example() {
 }
 ```
 
+<img src="https://res.cloudinary.com/lamprosvats/image/upload/v1708332229/a1klnzdbvy8wxzr1q40x.gif" alt="Example 1" width="400"/>
 <img src="https://i.ibb.co/6ysbJr5/4.png" alt="Example 1 with error" width="400"/>
 <img src="https://i.ibb.co/TvtQJxw/3.png" alt="Example 1" width="400"/>
 
@@ -159,7 +159,6 @@ function Example() {
       paddingSize={12}
       borderRadius="10px"
       noLeadingSpaces
-      separateThousands
     />
   );
 }
@@ -181,7 +180,6 @@ In this example:
 - type is set to "text", which sets the type of the input field.
 - borderRadius is set to "8px", which sets the border radius of the input field.
 - noLeadingSpaces is set to true, which might be used to remove leading spaces from the input value.
-- separateThousands is set to true, which might be used to format the input value with thousands separators.
 - borderColor is set to "gray", which sets the color of the input field's border.
 - bgColor is set to "lightgray", which sets the background color of the input field.
 - paddingSize is set to 20, which sets the padding inside the input field.
