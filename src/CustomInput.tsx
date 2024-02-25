@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
+import { InputType } from "./types";
 
 interface InputProps<T> {
   value: T;
-  type: "string" | "number"; // Define the type prop
+  // type: "string" | "number"; // Define the type prop
+  type: InputType;
   handleChange: (value: T) => void;
 
   label?: string;
@@ -40,23 +42,26 @@ const CustomInput = <T,>(props: InputProps<T>) => {
     paddingSize = 10,
   } = props;
 
-  const pad = paddingSize.toString() + "px";
+  const pad = useMemo(() => paddingSize.toString() + "px", [paddingSize]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let newValue: T;
+  const handleInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      let newValue: T;
 
-    if (typeof value === "number") {
-      newValue = event.target.value
-        ? (parseInt(event.target.value) as unknown as T)
-        : (0 as unknown as T);
-    } else if (noLeadingSpaces) {
-      newValue = event.target.value.replace(/^\s+/g, "") as unknown as T;
-    } else {
-      newValue = event.target.value as unknown as T;
-    }
+      if (typeof value === "number") {
+        newValue = event.target.value
+          ? (parseInt(event.target.value) as unknown as T)
+          : (0 as unknown as T);
+      } else if (noLeadingSpaces) {
+        newValue = event.target.value.replace(/^\s+/g, "") as unknown as T;
+      } else {
+        newValue = event.target.value as unknown as T;
+      }
 
-    handleChange(newValue);
-  };
+      handleChange(newValue);
+    },
+    [handleChange, noLeadingSpaces, value]
+  );
 
   return (
     <div
