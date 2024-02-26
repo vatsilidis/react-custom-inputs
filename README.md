@@ -1,21 +1,23 @@
 # React Custom Inputs written in Typescript
 
-The react-custom-inputs provides the CustomInput reusable functional component in React, which is
-a simple but powerful customized input, written with Typescript and love!
+A simple but powerful customized input in React, offered as a reusable Functional Component, written with Typescript and love!
 
 It's designed to provide a consistent way of handling user inputs throughout your application.
 
-Installation
-npm install --save your-package-name
+##
 
-name
-Replace your-package-name with the actual name of your package.
+# Table of Contents
 
-Props
+1. <a href="#installation">🛠️ Installation</a>
+2. <a href="#props">⚙️ Props</a>
+3. <a href="#usage">🚀 Usage</a>
+4. <a href="#tips">💡 Tips</a>
+5. <a href="#license">📝 License</a>
+6. <a href="#keywords">🔑 Keywords</a>
 
 ## Installation
 
-To install this component, you can use npm:
+🛠️ To install this component, you can use npm:
 
 ```bash
 npm install react-custom-inputs
@@ -29,9 +31,11 @@ yarn add react-custom-inputs
 
 ### You don't have to install extra types since all types are included in the package.
 
+[Return to Menu](#table-of-contents)
+
 ## Props
 
-### Here's a list of all the REQUIRED props:
+### ⚙️ REQUIRED props:
 
 | Prop     | Type             | Default | Description                              |
 | -------- | ---------------- | ------- | ---------------------------------------- |
@@ -41,24 +45,28 @@ yarn add react-custom-inputs
 - value (string): The current value of the input field. This is a controlled component, so you must update this prop whenever the onChange callback is called.
 - onChange (function): A callback that is called whenever the input value changes. It receives the new value as its only argument.
 
-### Here's a list of all the OPTIONAL props:
 
-| Prop            | Type    | Default | Description                          |
-| --------------- | ------- | ------- | ------------------------------------ |
-| label           | string  | -       | anything you want                    |
-| placeholder     | string  | -       | anything you want                    |
-| errorText       | string  | -       | anything you want                    |
-| unitLabel       | string  | -       | anything you want                    |
-| id              | string  | -       | anything you want                    |
-| shadowColor     | string  | -       | string, hex, rgb, etc                |
-| textColor       | string  | "black" | string, hex, rgb, etc                |
-| width           | string  | "100%"  | px, rem, %, etc                      |
-| type            | string  | "text"  | all supported types are listed below |
-| borderRadius    | string  | "4px"   | px, rem, %, etc                      |
-| noLeadingSpaces | boolean | false   | removes all leading spaces           |
-| borderColor     | string  | "black" | string, hex, rgb, etc                |
-| bgColor         | string  | "white" | string, hex, rgb, etc                |
-| paddingSize     | number  | 10      | px, rem, %, etc                      |
+##
+
+### ⚙️ OPTIONAL props:
+
+| Prop            | Type    | Default | Description                                                            |
+| --------------- | ------- | ------- | ---------------------------------------------------------------------- |
+| label           | string  | -       | anything you want                                                      |
+| placeholder     | string  | -       | anything you want                                                      |
+| errorText       | string  | -       | anything you want                                                      |
+| unitLabel       | string  | -       | anything you want                                                      |
+| id              | string  | -       | anything you want                                                      |
+| shadowColor     | string  | -       | string, hex, rgb, etc                                                  |
+| textColor       | string  | "black" | string, hex, rgb, etc                                                  |
+| width           | string  | "100%"  | px, rem, %, etc                                                        |
+| type            | string  | "text"  | supported types: text, password, email, number, tel, url, search, date |
+| borderRadius    | string  | "4px"   | px, rem, %, etc                                                        |
+| noLeadingSpaces | boolean | false   | removes all leading spaces                                             |
+| borderColor     | string  | "black" | string, hex, rgb, etc                                                  |
+| bgColor         | string  | "white" | string, hex, rgb, etc                                                  |
+| paddingSize     | number  | 10      | number representing px                                                 |
+
 
 - Supported types:
 - - text
@@ -75,9 +83,11 @@ yarn add react-custom-inputs
 - type (string, optional): The type of the input field. Defaults to "text". Other possible values include "password", "email", etc.
 - className (string, optional): A string of class names to be applied to the input field for custom styling.
 
+[Return to Menu](#table-of-contents)
+
 ## Usage
 
-Here are some examples of how to use the CustomInput component:
+🚀 Here are some examples of how to use the CustomInput component:
 
 - A very basic example with only the required props
 
@@ -92,7 +102,7 @@ function Example() {
 }
 ```
 
-- A little more advanced example using some more props!
+- A more advanced example using more props!
 
 ```javascript
 import React, { useState } from "react";
@@ -128,7 +138,7 @@ function Example() {
 <img src="https://i.ibb.co/6ysbJr5/4.png" alt="Example 1 with error" width="400"/>
 <img src="https://i.ibb.co/TvtQJxw/3.png" alt="Example 1" width="400"/>
 
-- A more advanced example using all possible props!
+- Another example using even more props!
 
 ```javascript
 import React, { useState } from "react";
@@ -183,3 +193,97 @@ In this example:
 - borderColor is set to "gray", which sets the color of the input field's border.
 - bgColor is set to "lightgray", which sets the background color of the input field.
 - paddingSize is set to 20, which sets the padding inside the input field.
+
+[Return to Menu](#table-of-contents)
+
+## Tips
+
+### 💡 Useful Tips for Validations
+
+- An easy way to validate the user input and feed the component with error text accordingly:
+
+```javascript
+import React, { useState } from "react";
+import { CustomInput } from "react-custom-inputs";
+
+function Example() {
+  const [value, setValue] = useState();
+
+  const handleChange = (value: any) => {
+    setValue(value);
+  };
+
+  // Basic Text length validation
+  const getErrorText = () => {
+    const re = /^\d{10}$/;
+    return re.test(value) ? null : "The maximum PIN length is 5";
+  };
+
+  return (
+    <CustomInput
+      type="number"
+      id="my-phone-input"
+      value={value}
+      onChange={handleChange}
+      placeholder="Enter your phone"
+      errorText={getErrorText}
+    />
+  );
+}
+```
+
+- Similar if for email validation:
+
+```javascript
+import React, { useState } from "react";
+import { CustomInput } from "react-custom-inputs";
+
+function Example() {
+  const [value, setValue] = useState();
+
+  const handleChange = (value: any) => {
+    setValue(value);
+  };
+
+  // Basic Email format validation
+  const getErrorText = () => {
+    const re = /\S+@\S+\.[a-zA-Z]{2,4}$/;
+    return re.test(value) ? null : "Email format is not correct";
+  };
+
+  return (
+    <CustomInput
+      type="email"
+      id="my-phone-input"
+      value={value}
+      onChange={handleChange}
+      placeholder="Enter your phone"
+      errorText={getErrorText}
+    />
+  );
+}
+```
+
+[Return to Menu](#table-of-contents)
+
+## License
+
+### 📝 MIT License
+
+Copyright (c) 2024 Lampros Vatsilidis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[Return to Menu](#table-of-contents)
+
+## Keywords
+
+🔑 Tags: React input, React custom input, custom input
+
+[Return to Menu](#table-of-contents)
