@@ -6,7 +6,6 @@ interface InputProps<T> {
   // type: "string" | "number"; // Define the type prop
   type: InputType;
   handleChange: (value: T) => void;
-
   label?: string;
   width?: string;
   placeholder?: string;
@@ -41,6 +40,7 @@ const CustomInput = <T,>(props: InputProps<T>) => {
     bgColor = "white",
     paddingSize = 10,
   } = props;
+
 
   const pad = useMemo(() => paddingSize.toString() + "px", [paddingSize]);
 

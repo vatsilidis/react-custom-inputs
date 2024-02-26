@@ -45,6 +45,7 @@ yarn add react-custom-inputs
 - value (string): The current value of the input field. This is a controlled component, so you must update this prop whenever the onChange callback is called.
 - onChange (function): A callback that is called whenever the input value changes. It receives the new value as its only argument.
 
+
 ##
 
 ### ⚙️ OPTIONAL props:
@@ -65,6 +66,7 @@ yarn add react-custom-inputs
 | borderColor     | string  | "black" | string, hex, rgb, etc                                                  |
 | bgColor         | string  | "white" | string, hex, rgb, etc                                                  |
 | paddingSize     | number  | 10      | number representing px                                                 |
+
 
 - Supported types:
 - - text
